@@ -1,0 +1,31 @@
+﻿kind: Ingress
+apiVersion: networking.k8s.io/v1beta1
+metadata:
+  name: fhirserv
+  namespace: fhir
+  selfLink: /apis/networking.k8s.io/v1beta1/namespaces/fhir/ingresses/fhirserv
+  uid: 7eaa8208-a603-4a4a-9cf8-dc0dc4ee8a0a
+  resourceVersion: '61416501'
+  generation: 2
+  creationTimestamp: '2022-01-29T23:20:50Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: networking.k8s.io/v1beta1
+      time: '2022-01-29T23:20:50Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:rules': {}
+spec:
+  rules:
+    - host: qie-svc-fhir.apps.lab.okd.lan
+      http:
+        paths:
+          - path: /fhirserv
+            pathType: ImplementationSpecific
+            backend:
+              serviceName: qie-svc
+              servicePort: 20014
+status:
+  loadBalancer: {}

@@ -1,0 +1,71 @@
+﻿kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    template.openshift.io/expose-uri: 'postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}'
+  selfLink: /api/v1/namespaces/fhir/services/postgres
+  resourceVersion: '59919286'
+  name: postgres
+  uid: f3a1df42-4a03-46f4-85e7-a2d403d4e227
+  creationTimestamp: '2022-02-04T17:44:52Z'
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-02-04T17:44:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:template.openshift.io/expose-uri': {}
+          'f:labels':
+            .: {}
+            'f:template': {}
+            'f:template.openshift.io/template-instance-owner': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":5432,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:name': {}
+          'f:sessionAffinity': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2022-02-04T18:01:06Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:externalIPs': {}
+          'f:externalTrafficPolicy': {}
+          'f:type': {}
+  namespace: fhir
+  labels:
+    template: postgresql-persistent-template
+    template.openshift.io/template-instance-owner: 3606143d-d7c0-4d03-aa7c-3349d808ab2d
+spec:
+  ports:
+    - name: postgresql
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+      nodePort: 31618
+  selector:
+    name: postgres
+  clusterIP: 172.30.54.86
+  clusterIPs:
+    - 172.30.54.86
+  type: NodePort
+  externalIPs:
+    - 192.168.22.212
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}

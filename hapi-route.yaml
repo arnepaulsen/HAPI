@@ -1,0 +1,63 @@
+﻿kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: hapi
+  namespace: fhir
+  uid: 6570af6f-c89b-4724-bab2-c5cc5edd78ac
+  resourceVersion: '48980939'
+  creationTimestamp: '2022-01-05T18:50:09Z'
+  labels:
+    app: hapi
+    app.kubernetes.io/component: hapi
+    app.kubernetes.io/instance: hapi
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: kubectl-expose
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-01-05T18:50:09Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-01-05T18:50:09Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+spec:
+  host: hapi-fhir.apps.lab.ocp.lan
+  to:
+    kind: Service
+    name: hapi
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: hapi-fhir.apps.lab.ocp.lan
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2022-01-05T18:50:09Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.lab.ocp.lan

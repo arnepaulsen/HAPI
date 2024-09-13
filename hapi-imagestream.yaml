@@ -1,0 +1,75 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+    openshift.io/image.dockerRepositoryCheck: '2021-11-03T16:49:08Z'
+  resourceVersion: '24465569'
+  name: hapi
+  uid: e5d9a939-1969-400c-b230-6fe6916f999f
+  creationTimestamp: '2021-11-03T16:49:06Z'
+  generation: 2
+  managedFields:
+    - manager: oc
+      operation: Update
+      apiVersion: image.openshift.io/v1
+      time: '2021-11-03T16:49:06Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+        'f:spec':
+          'f:tags':
+            .: {}
+            'k:{"name":"latest"}':
+              .: {}
+              'f:annotations':
+                .: {}
+                'f:openshift.io/imported-from': {}
+              'f:from':
+                .: {}
+                'f:kind': {}
+                'f:name': {}
+              'f:generation': {}
+              'f:importPolicy': {}
+              'f:name': {}
+              'f:referencePolicy':
+                .: {}
+                'f:type': {}
+  namespace: fhir
+  labels:
+    app: hapi
+    app.kubernetes.io/component: hapi
+    app.kubernetes.io/instance: hapi
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: latest
+      annotations:
+        openshift.io/imported-from: 'hapiproject/hapi:latest'
+      from:
+        kind: DockerImage
+        name: 'hapiproject/hapi:latest'
+      generation: 2
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: 'image-registry.openshift-image-registry.svc:5000/fhir/hapi'
+  tags:
+    - tag: latest
+      items:
+        - created: '2021-11-03T16:49:08Z'
+          dockerImageReference: >-
+            hapiproject/hapi@sha256:d0b6a171e962879c0d5787fc56dfb94c19941caf5a62b948816ace1a65b027ae
+          image: >-
+            sha256:d0b6a171e962879c0d5787fc56dfb94c19941caf5a62b948816ace1a65b027ae
+          generation: 2

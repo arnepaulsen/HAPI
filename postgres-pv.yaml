@@ -1,0 +1,69 @@
+﻿kind: PersistentVolume
+apiVersion: v1
+metadata:
+  annotations:
+    pv.kubernetes.io/bound-by-controller: 'yes'
+  selfLink: /api/v1/persistentvolumes/postgres
+  resourceVersion: '59916019'
+  name: postgres
+  uid: 8f00bc6c-c921-4b74-b266-be9a6b9dcc9a
+  creationTimestamp: '2022-02-04T17:40:53Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2022-02-04T17:41:56Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+        'f:spec':
+          'f:accessModes': {}
+          'f:capacity':
+            .: {}
+            'f:storage': {}
+          'f:nfs':
+            .: {}
+            'f:path': {}
+            'f:server': {}
+          'f:persistentVolumeReclaimPolicy': {}
+          'f:volumeMode': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-02-04T17:48:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:pv.kubernetes.io/bound-by-controller': {}
+        'f:spec':
+          'f:claimRef':
+            .: {}
+            'f:apiVersion': {}
+            'f:kind': {}
+            'f:name': {}
+            'f:namespace': {}
+            'f:resourceVersion': {}
+            'f:uid': {}
+        'f:status':
+          'f:phase': {}
+  finalizers:
+    - kubernetes.io/pv-protection
+  labels:
+    app: postgres
+spec:
+  capacity:
+    storage: 5Gi
+  nfs:
+    server: 192.168.22.1
+    path: /shares/postgres
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+status:
+  phase: Bound

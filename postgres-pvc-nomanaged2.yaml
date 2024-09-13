@@ -1,0 +1,18 @@
+﻿kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-pvc
+  namespace: fhir
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteMany
+  selector:
+    matchLabels:
+      app: postgres
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: postgres
+  volumeMode: Filesystem
